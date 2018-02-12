@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "207618280379",
+    "firebase_url": "https://tennis-world-31261.firebaseio.com",
+    "project_id": "tennis-world-31261",
+    "storage_bucket": "tennis-world-31261.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:207618280379:android:4c5865267d567d10",
+        "android_client_info": {
+          "package_name": "com.nocom.capstone_stage2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "207618280379-n70m7r1bt8qb8s50n3dlbjsoo5bk79ej.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1fx9BZRq9oe3BqBOFV5PMHZkfyv-K_3w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

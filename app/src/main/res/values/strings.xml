@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Capstone_Stage2</string>
+    <string name="Home">Home</string>
+    <string name="Schedule">Schedule</string>
+    <string name="ATP">Atp</string>
+    <string name="WTA">Wta</string>
+    <string name="Ranking">Ranking</string>
+    <string name="action_settings">Settings</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="articletitleimage">article title</string>
+    <string name="title">title</string>
+    <string name="subtitle">subtitle</string>
+    <string name="articletitle">article title</string>
+    <string name="favorite">favorite</string>
+    <string name="rankmen">rank men</string>
+    <string name="playername">player name</string>
+    <string name="points">points</string>
+    <string name="nationality">nationality</string>
+    <string name="result">result</string>
+    <string name="score">score</string>
+    <string name="vs">vs</string>
+    <string name="article_title">articletitle</string>
+    <string name="player_name">playername</string>
+    <string name="rank_men">rankmen</string>
+    <string name="go_to_details">go to details</string>
+    <string name="Click_for_Detail">Click For Details</string>
+    <string name="upcoming_matches">Upcoming Matches</string>
+</resources>
