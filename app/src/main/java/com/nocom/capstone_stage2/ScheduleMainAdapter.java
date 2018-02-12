@@ -40,7 +40,7 @@ public class ScheduleMainAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public int getItemViewType(int position) {
-        if(position % 3==0){
+        if (position % 2 == 0) {
             return R.layout.schduleadapter;// schedule=advertisment
         }else{
             return R.layout.resultadapter; //result=person
@@ -135,6 +135,20 @@ public class ScheduleMainAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             vh2.dash1.setText("/");
             vh2.dash2.setText("/");
 
+            if (user.getScorehome3() != null) {
+                vh2.set5.setText(user.getScorehome3());
+            }
+
+            if (user.getScoreaway3() != null) {
+
+                vh2.set6.setText(user.getScoreaway3());
+                vh2.dash3.setText("/");
+            }
+
+
+
+
+
 
 
 
@@ -146,8 +160,11 @@ public class ScheduleMainAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         public  TextView set2 ;
          public  TextView set3 ;
          public  TextView set4 ;
+         public TextView set5;
+         public TextView set6;
          public  TextView dash1 ;
          public  TextView dash2 ;
+         public TextView dash3;
 
         public resultadapterviewholder(View view){
             super(view);
@@ -155,8 +172,11 @@ public class ScheduleMainAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             set2 = itemView.findViewById(R.id.away_score1);
             set3 = itemView.findViewById(R.id.home_score2);
             set4 = itemView.findViewById(R.id.away_scoretwo);
+            set5 = itemView.findViewById(R.id.home_score3);
+            set6 = itemView.findViewById(R.id.away_score3);
             dash1=itemView.findViewById(R.id.dash);
             dash2=itemView.findViewById(R.id.dash2);
+            dash3 = itemView.findViewById(R.id.dash3);
         }
     }
 

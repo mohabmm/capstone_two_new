@@ -60,7 +60,7 @@ public class ScheduleFragment extends Fragment  {
     String savedTime;
     //ScheduleMainAdapter adapter ;
     // remeber to remove and change this trial
-    String trial = "http://api.sportradar.us/tennis-t2/en/schedules/2018-01-28/results.json?api_key=qcxx9ms27b2mnjvmj5db737u";
+    // String trial = "http://api.sportradar.us/tennis-t2/en/schedules/2018-01-28/results.json?api_key=qcxx9ms27b2mnjvmj5db737u";
 
     String DailyResult = "http://api.sportradar.us/tennis-t2/en/schedules/" + savedTime + "/results.json?api_key=qcxx9ms27b2mnjvmj5db737u";
     public LoaderManager.LoaderCallbacks<ArrayList<CollectionSchedule>> loaderone = new LoaderManager.LoaderCallbacks<ArrayList<CollectionSchedule>>() {
@@ -68,7 +68,7 @@ public class ScheduleFragment extends Fragment  {
         public android.support.v4.content.Loader<ArrayList<CollectionSchedule>> onCreateLoader(int id, Bundle args) {
             // Create a new loader for the given URL
 
-            return new ScheduleLoader(getActivity(), trial);
+            return new ScheduleLoader(getActivity(), DailyResult);
         }
 
         @Override
@@ -119,7 +119,7 @@ public class ScheduleFragment extends Fragment  {
         final Intent intentThatStartedThisActivity = getActivity().getIntent();
         savedMillis = System.currentTimeMillis();
 
-        double t0 = System.currentTimeMillis(), t1;
+        //  double t0 = System.currentTimeMillis(), t1;
 
 
         if (savedInstanceState != null) {

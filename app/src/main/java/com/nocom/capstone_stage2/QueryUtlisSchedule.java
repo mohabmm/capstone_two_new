@@ -137,9 +137,11 @@ public final class QueryUtlisSchedule {
 
                 String homescore2=null;
                 String awayscore2=null;
+                String homescore3 = null;
+                String awayscore3 = null;
                 if(!(currentSportEventStatus.optString("period_scores").equals("")))  {
 
-                if (!(currentSportEventStatus.optString("period_scores").equals(""))) {
+
 
 
                     period_scores = currentSportEventStatus.optJSONArray("period_scores");
@@ -154,7 +156,7 @@ public final class QueryUtlisSchedule {
 
                     }
 
-
+                    if (!(currentSportEventStatus.optString("period_scores").equals(""))) {
 
                     for (int k = 1; k < 2; k++) {
 
@@ -165,6 +167,21 @@ public final class QueryUtlisSchedule {
 
                     }
                 }
+
+
+                    for (int k = 2; k <= 3; k++) {
+
+
+                        if (!(currentSportEventStatus.optString("period_scores").equals(""))) {
+                            JSONObject currentperiodscore = period_scores.optJSONObject(k);
+                            if (currentperiodscore != null) {
+                                homescore3 = currentperiodscore.optString("home_score");
+                                awayscore3 = currentperiodscore.optString("away_score");
+
+                            }
+
+                        }
+                    }
 
 
                 //   mySchedule = new ArrayList<Schedule>(); // used to get the player names
@@ -195,8 +212,16 @@ public final class QueryUtlisSchedule {
                 }
 
 
-                CollectionSchedule collection = new CollectionSchedule(name, away, homescore, awayscore,homescore2,awayscore2);
-                list.add(collection);
+                if (homescore3 != null && awayscore3 != null) {
+
+                    CollectionSchedule collection = new CollectionSchedule(name, away, homescore, awayscore, homescore2, awayscore2, homescore3, awayscore3);
+                    list.add(collection);
+                } else {
+
+
+                    CollectionSchedule collection = new CollectionSchedule(name, away, homescore, awayscore, homescore2, awayscore2);
+                    list.add(collection);
+                }
             }
         } catch (JSONException e) {
             // If an error is thrown when executing any of the above statements in the "try" block,

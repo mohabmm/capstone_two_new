@@ -18,6 +18,9 @@ public class CollectionSchedule {
     String scoreaway2;
 
 
+    String scorehome3;
+    String scoreaway3;
+
 
 
 
@@ -34,6 +37,21 @@ public class CollectionSchedule {
         scoreaway2=awayscore2;
 
 
+
+
+    }
+
+    public CollectionSchedule(String name, String away, String homescore, String awayscore, String homescore2, String awayscore2, String homescore3, String awayscore3) {
+
+        mnamehome = name;
+        mnameaway = away;
+        scorehome1 = homescore;
+        scoreaway1 = awayscore;
+        scorehome2 = homescore2;
+        scoreaway2 = awayscore2;
+
+        scorehome3 = homescore3;
+        scoreaway3 = awayscore3;
 
 
     }
@@ -63,5 +81,11 @@ public class CollectionSchedule {
         return scorehome2;
     }
 
+    public String getScorehome3() {
+        return scorehome3;
+    }
 
+    public String getScoreaway3() {
+        return scoreaway3;
+    }
 }

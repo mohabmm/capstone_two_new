@@ -2,30 +2,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
-    android:weightSum="6">
+    android:weightSum="9">
 
     <TextView
         android:id="@+id/home_score1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
         android:layout_weight="1"
         android:contentDescription="@string/rank_men"
         android:gravity="center"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/dash"
-        android:textSize="30sp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:contentDescription="@string/nationality"
         android:gravity="center"
         android:padding="10dp"
-        android:text="/" />
+        android:textSize="30sp" />
 
 
     <TextView
@@ -33,10 +31,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textSize="30sp"
         android:contentDescription="@string/nationality"
         android:gravity="center"
         android:padding="10dp"
+        android:textSize="30sp"
         />
 
     <TextView
@@ -44,32 +42,62 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textSize="30sp"
         android:contentDescription="@string/player_name"
         android:gravity="center"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:textSize="30sp" />
 
 
     <TextView
         android:id="@+id/dash2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
         android:layout_weight="1"
         android:contentDescription="@string/rank_men"
         android:gravity="center"
         android:padding="10dp"
-        android:text="/" />
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/away_scoretwo"
         android:layout_width="match_parent"
-        android:textSize="30sp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:contentDescription="@string/points"
         android:gravity="center"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/home_score3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:contentDescription="@string/rank_men"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/dash3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:contentDescription="@string/nationality"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textSize="30sp" />
+
+
+    <TextView
+        android:id="@+id/away_score3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:contentDescription="@string/nationality"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textSize="30sp" />
 
 
 </LinearLayout>
