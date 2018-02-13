@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
             Uri currentPetUri = ContentUris.withAppendedId(TennisContract.TennisEntry.CONTENT_URI, id);
             intent.setData(currentPetUri);
             startActivity(intent);
+            overridePendingTransition(R.anim.goup, R.anim.godown);
 
         }
 

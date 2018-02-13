@@ -1,66 +1,71 @@
 package com.nocom.capstone_stage2;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.ImageView;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
+import com.daimajia.androidanimations.library.Techniques;
+import com.viksaa.sssplash.lib.activity.AwesomeSplash;
+import com.viksaa.sssplash.lib.cnst.Flags;
+import com.viksaa.sssplash.lib.model.ConfigSplash;
 
 /**
  * Created by Moha on 1/19/2018.
  */
 
-public class splash extends AppCompatActivity {
+public class splash extends AwesomeSplash {
 
-    CoordinatorLayout coordinatorLayout;
 
-    private static int  splashtime = 8000;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.splash);
-        ImageView imageView = (ImageView)findViewById(R.id.myimage);
-        coordinatorLayout=(CoordinatorLayout)findViewById(R.id.cordi);
+    public void initSplash(ConfigSplash configSplash) {
 
 
-        AdView mAdView = (AdView)findViewById(R.id.adView);
-        // Create an ad request. Check logcat output for the hashed device ID to
-        // get test ads on a physical device. e.g.
-        // "Use AdRequest.Builder.addTestDevice("ABCDEF012345") to get test ads on this device."
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                .build();
-        mAdView.loadAd(adRequest);
+        //Customize Circular Reveal
+        configSplash.setBackgroundColor(R.color.colorPrimary); //any color you want form colors.xml
+        configSplash.setAnimCircularRevealDuration(2000); //int ms
+        configSplash.setRevealFlagX(Flags.REVEAL_RIGHT);  //or Flags.REVEAL_LEFT
+        configSplash.setRevealFlagY(Flags.REVEAL_BOTTOM); //or Flags.REVEAL_TOP
+
+        //Choose LOGO OR PATH; if you don't provide String value for path it's logo by default
+
+        //Customize Logo
+        configSplash.setLogoSplash(R.drawable.tennis); //or any other drawable
+        configSplash.setAnimLogoSplashDuration(2000); //int ms
+        configSplash.setAnimLogoSplashTechnique(Techniques.FlipOutX); //choose one form Techniques (ref: https://github.com/daimajia/AndroidViewAnimations)
 
 
+        //Customize Path
+        // configSplash.setPathSplash(SyncStateContract.Constants._COUNT); //set path String
+        configSplash.setOriginalHeight(400); //in relation to your svg (path) resource
+        configSplash.setOriginalWidth(400); //in relation to your svg (path) resource
+        configSplash.setAnimPathStrokeDrawingDuration(3000);
+        configSplash.setPathSplashStrokeSize(6); //I advise value be <5
+        configSplash.setPathSplashStrokeColor(R.color.colorPrimaryDark); //any color you want form colors.xml
+        configSplash.setAnimPathFillingDuration(3000);
+        configSplash.setPathSplashFillColor(R.color.colorPrimary); //path object filling color
 
 
+        //Customize Title
+        configSplash.setTitleSplash("Welecome To Tennis World ");
+        configSplash.setTitleTextColor(R.color.colorsecondary);
+        configSplash.setTitleTextSize(30f); //float value
+        configSplash.setAnimTitleDuration(3000);
+        configSplash.setAnimTitleTechnique(Techniques.FlipInX);
+        //  configSplash.setTitleFont("fonts/myfont.ttf"); //provide string to your font located in assets/fonts/
 
-        Snackbar snackbar = Snackbar
-                .make(coordinatorLayout, "Welcome to Tennis World", Snackbar.LENGTH_LONG);
-
-        snackbar.show();
+    }
 
 
-        new Handler().postDelayed(new Runnable() {
+    @Override
+    public void animationsFinished() {
+
+        Intent home = new Intent(splash.this, MainActivity.class);
+        startActivity(home);
 
 
-            @Override
-            public void run (){
+    }
 
-                Intent home = new Intent(splash.this,MainActivity.class);
-                startActivity(home);
-
-                finish();
-            }
-        },splashtime);
-
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
 }

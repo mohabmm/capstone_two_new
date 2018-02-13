@@ -7,6 +7,7 @@ package com.nocom.capstone_stage2;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,10 +21,6 @@ class WomenRankingAdapter extends RecyclerView.Adapter<WomenRankingAdapter.resul
 
     Context mContext;
      ArrayList<RankingWomen> results;
-    //  ArrayList<RankingMen> rankingMen;
-
-    //ArrayList<RankingMen> rankingMen = new ArrayList<RankingMen>();
-
 
 
 
@@ -110,17 +107,17 @@ class WomenRankingAdapter extends RecyclerView.Adapter<WomenRankingAdapter.resul
         public resultadapterviewholder(View itemView) {
             super(itemView);
 
-            nametextview = (TextView) itemView.findViewById(R.id.name);
-            pointsmentextview = (TextView) itemView.findViewById(R.id.pointsmen);
-            rankmentextview = (TextView) itemView.findViewById(R.id.rankmen);
-            nationalitytextview = (TextView) itemView.findViewById(R.id.nationality);
+            nametextview = itemView.findViewById(R.id.name);
+            pointsmentextview = itemView.findViewById(R.id.pointsmen);
+            rankmentextview = itemView.findViewById(R.id.rankmen);
+            nationalitytextview = itemView.findViewById(R.id.nationality);
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            int clickedPosition = getAdapterPosition();
-            mOnClickListener.onListItemClick(clickedPosition);
+
+            Log.i("women ranking", "women ranking button clicked ");
         }
 
     }
