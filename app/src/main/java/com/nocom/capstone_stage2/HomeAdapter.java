@@ -50,8 +50,6 @@ class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.adapterViewHolder> {
         boolean shouldAttachToParentImmediately = false;
 
 
-//        onToggleClicked();
-
         View view = inflater.inflate(layoutIdForListItem, viewGroup, shouldAttachToParentImmediately);
         return new adapterViewHolder(view);
     }
@@ -68,9 +66,6 @@ class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.adapterViewHolder> {
 
         final Home currentNews = news.get(position);
 
-        // the button that will be added part
-
-
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
 
@@ -83,6 +78,7 @@ class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.adapterViewHolder> {
 
                 if (!database(currentNews)) {
 
+                    floatingActionButton.setImageResource(R.drawable.star);
                     ContentValues contentValues = new ContentValues();
                     // Put the task description and selected mPriority into the ContentValues
                     contentValues.put(TennisContract.TennisEntry.COLUMN_DESCRIBTION, currentNews.getMsnippet());
@@ -98,12 +94,10 @@ class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.adapterViewHolder> {
 
                 } else {
 
+                    floatingActionButton.setImageResource(R.drawable.star2);
                     Uri uri = TennisContract.TennisEntry.CONTENT_URI;
-
                     String selection = TennisContract.TennisEntry.COLUMN_SHORTDESCRIBTION + "=?";
                     String[] selectionArgs = {String.valueOf(currentNews.getMarticleheadline())};
-
-
                     mContext.getContentResolver().delete(uri, selection, selectionArgs);
                     Toast.makeText(mContext, "movie is deleted", Toast.LENGTH_SHORT).show();
 
@@ -123,11 +117,6 @@ class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.adapterViewHolder> {
 
             public void onClick(View view) {
 
-                //  holder.itemView.setOnClickListener(new View.OnClickListener() {
-                //                                       @Override
-                //                                     public void onClick(View v) {
-
-
                 Intent intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse(currentNews.getMweburl()));
                 mContext.startActivity(intent);
 
@@ -137,11 +126,7 @@ class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.adapterViewHolder> {
 
         holder.shortdes.setText(currentNews.getMarticleheadline());
         holder.describtion.setText(currentNews.getMsnippet());
-
-
         String temp = "https://static01.nyt.com/images/2018/01/17/sports/17tennis-men1/merlin_132343739_8018a288-07ae-48ed-ac71-deedcd7ad757-master768.jpg";
-
-
         String myimage = "https://static01.nyt.com/" + currentNews.getMimageurl().replace("master768", "articleLarge");
         Log.i("that it pls ", myimage);
 
@@ -154,9 +139,6 @@ class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.adapterViewHolder> {
     }
 
 
-
-
-
     @Override
     public int getItemCount() {
 
@@ -164,8 +146,6 @@ class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.adapterViewHolder> {
         return news.size();
 
     }
-
-
 
 
     public void setWeatherData(ArrayList<Home> weatherData) {
@@ -203,7 +183,6 @@ class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.adapterViewHolder> {
         public TextView shortdes;
         public TextView describtion;
         ImageView image;
-
 
 
         public adapterViewHolder(View itemView) {

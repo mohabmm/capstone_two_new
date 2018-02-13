@@ -10,13 +10,8 @@ public class Schedule {
     public Schedule(String name) {
 
         mname = name ;
-       // manother=another;
 
     }
 
-
-    public String getMname() {
-        return mname;
-    }
 }
 

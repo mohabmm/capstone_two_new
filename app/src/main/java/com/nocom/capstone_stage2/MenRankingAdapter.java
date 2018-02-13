@@ -22,9 +22,7 @@ class MenRankingAdapter extends RecyclerView.Adapter<MenRankingAdapter.resultada
 
     Context mContext;
     ArrayList<RankingMen> results;
-  //  ArrayList<RankingMen> rankingMen;
 
-    //ArrayList<RankingMen> rankingMen = new ArrayList<RankingMen>();
 
 
 
@@ -71,8 +69,6 @@ class MenRankingAdapter extends RecyclerView.Adapter<MenRankingAdapter.resultada
        holder.nationalitytextview.setText(nationality);
 
 
-       // holder.set1.setText(currentNews.getMhomescore());
-       // holder.set2.setText(currentNews.getset2());
 
 
 

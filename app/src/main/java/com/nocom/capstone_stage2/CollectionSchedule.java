@@ -22,21 +22,14 @@ public class CollectionSchedule {
     String scoreaway3;
 
 
-
-
-
-
-
     public CollectionSchedule(String name, String away, String homescore, String awayscore, String homescore2, String awayscore2) {
 
-        mnamehome=name;
-        mnameaway=away;
-        scorehome1=homescore;
-        scoreaway1=awayscore;
-        scorehome2=homescore2;
-        scoreaway2=awayscore2;
-
-
+        mnamehome = name;
+        mnameaway = away;
+        scorehome1 = homescore;
+        scoreaway1 = awayscore;
+        scorehome2 = homescore2;
+        scoreaway2 = awayscore2;
 
 
     }
@@ -49,7 +42,6 @@ public class CollectionSchedule {
         scoreaway1 = awayscore;
         scorehome2 = homescore2;
         scoreaway2 = awayscore2;
-
         scorehome3 = homescore3;
         scoreaway3 = awayscore3;
 

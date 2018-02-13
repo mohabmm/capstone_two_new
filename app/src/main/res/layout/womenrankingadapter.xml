@@ -10,10 +10,15 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+
         android:contentDescription="@string/rank_men"
         android:gravity="center"
+
+
         android:padding="10dp"
-        android:text="@string/rank_men" />
+        android:text="@string/rank_men"
+        android:textColor="@color/textcolor"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/nationality"
@@ -21,27 +26,39 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:contentDescription="@string/nationality"
+
         android:gravity="center"
+
         android:padding="10dp"
-        android:text="@string/nationality" />
+        android:text="@string/nationality"
+        android:textColor="@color/textcolor"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/name"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+
         android:contentDescription="@string/player_name"
         android:gravity="center"
+
         android:padding="10dp"
-        android:text="@string/player_name" />
+        android:text="@string/player_name"
+        android:textColor="@color/textcolor"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/pointsmen"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+
         android:contentDescription="@string/points"
         android:gravity="center"
+
         android:padding="10dp"
-        android:text="@string/points" />
+        android:text="@string/points"
+        android:textColor="@color/textcolor"
+        android:textSize="20sp" />
 </LinearLayout>

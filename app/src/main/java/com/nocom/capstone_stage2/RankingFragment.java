@@ -19,6 +19,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.ArrayList;
@@ -34,7 +36,7 @@ public class RankingFragment extends Fragment {
     private static final int MOVIE1_LOADER_ID = 1;
     private static final int MOVIE2_LOADER_ID = 2;
     private static final String BUNDLE_RECYCLER_LAYOUT = "classname.recycler.layout";
-    final String RANKINGWEBSITE = "http://api.sportradar.us/tennis-t2/en/players/rankings.json?api_key=qcxx9ms27b2mnjvmj5db737u";
+    final String RANKINGWEBSITE = "http://api.sportradar.us/tennis-t2/en/players/rankings.json?api_key=regz4ypwqjdq2h43d6d66kkh";
     public RecyclerView mrecyclerview;
     Button Atp;
     Button Wta;
@@ -57,7 +59,7 @@ public class RankingFragment extends Fragment {
         public void onLoadFinished(android.support.v4.content.Loader<ArrayList<RankingMen>> loader, ArrayList<RankingMen> data) {
 
 
-//            progressBar.setVisibility(View.INVISIBLE);
+
 
             if (savedRecyclerLayoutState != null) {
 
@@ -99,8 +101,6 @@ public class RankingFragment extends Fragment {
         public void onLoadFinished(android.support.v4.content.Loader<ArrayList<RankingWomen>> loader, ArrayList<RankingWomen> data2) {
 
 
-//            progressBar.setVisibility(View.INVISIBLE);
-
             if (savedRecyclerLayoutState != null) {
 
                 mrecyclerview.getLayoutManager().onRestoreInstanceState(savedRecyclerLayoutState);
@@ -141,6 +141,15 @@ public class RankingFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.ranking,container,false);
+        AdView mAdView = view.findViewById(R.id.adView);
+        // Create an ad request. Check logcat output for the hashed device ID to
+        // get test ads on a physical device. e.g.
+        // "Use AdRequest.Builder.addTestDevice("ABCDEF012345") to get test ads on this device."
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+        mAdView.loadAd(adRequest);
+
 
         if (savedInstanceState != null) {
 
@@ -251,11 +260,10 @@ public class RankingFragment extends Fragment {
         } else {
             // Otherwise, display error
             // First, hide loading indicator so error message will be visible
-            //   emptytext.setText("No Internet Connection ");
+
             emptytextview.setText("no onternet conection ");
             progressBar.setVisibility(View.INVISIBLE);
 
-            // Update empty state with no connection error message
         }
 
     }

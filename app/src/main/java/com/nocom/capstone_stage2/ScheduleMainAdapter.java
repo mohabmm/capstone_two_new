@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import static com.nocom.capstone_stage2.ScheduleFragment.SHARED_PREFS_KEY;
 
 
-
 public class ScheduleMainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private static final String TAG = ScheduleMainAdapter.class.getSimpleName();
@@ -24,11 +23,9 @@ public class ScheduleMainAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private final int USER = 0, IMAGE = 1;
     private Context context;
 
-    public ScheduleMainAdapter(Context context,ArrayList<CollectionSchedule> people){
+    public ScheduleMainAdapter(Context context, ArrayList<CollectionSchedule> people) {
         personList = people;
-        this.context=context;
-        // added part
-     //   setHasStableIds(true);
+        this.context = context;
 
     }
 
@@ -41,40 +38,35 @@ public class ScheduleMainAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public int getItemViewType(int position) {
         if (position % 2 == 0) {
-            return R.layout.schduleadapter;// schedule=advertisment
-        }else{
-            return R.layout.resultadapter; //result=person
+            return R.layout.schduleadapter;
+        } else {
+            return R.layout.resultadapter;
         }
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
         final RecyclerView.ViewHolder viewHolder;
-        String json = new Gson().toJson(personList );
+        String json = new Gson().toJson(personList);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(SHARED_PREFS_KEY, json).commit();
 
 
-
-
-
-
-
-        switch (viewType){
+        switch (viewType) {
             case R.layout.schduleadapter:
-               View v1= LayoutInflater.from(context).inflate(R.layout.schduleadapter,parent,false);
-                viewHolder=new Scheduleviewholder(v1);
+                View v1 = LayoutInflater.from(context).inflate(R.layout.schduleadapter, parent, false);
+                viewHolder = new Scheduleviewholder(v1);
                 break;
 
             case R.layout.resultadapter:
-              View  v2= LayoutInflater.from(context).inflate(R.layout.resultadapter,parent,false);
-                viewHolder=new resultadapterviewholder(v2);
+                View v2 = LayoutInflater.from(context).inflate(R.layout.resultadapter, parent, false);
+                viewHolder = new resultadapterviewholder(v2);
 
                 break;
             default:
-                v2= LayoutInflater.from(context).inflate(R.layout.schduleadapter,parent,false);
-                viewHolder=new Scheduleviewholder(v2);
+                v2 = LayoutInflater.from(context).inflate(R.layout.schduleadapter, parent, false);
+                viewHolder = new Scheduleviewholder(v2);
                 break;
 
         }
@@ -85,7 +77,6 @@ public class ScheduleMainAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder viewHolder, int position) {
-
 
 
         CollectionSchedule object = personList.get(position);
@@ -100,13 +91,14 @@ public class ScheduleMainAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             resultadapterviewholder vh2 = (resultadapterviewholder) viewHolder;
             configureViewHolder2(vh2, position);
         }
-        }
+    }
 
     @Override
     public int getItemCount() {
         return personList.size();
     }
-// added part
+
+    // added part
     @Override
     public long getItemId(int position) {
         return position;
@@ -146,27 +138,21 @@ public class ScheduleMainAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             }
 
 
-
-
-
-
-
-
         }
     }
 
-     class resultadapterviewholder extends RecyclerView.ViewHolder{
-        public  TextView set1;
-        public  TextView set2 ;
-         public  TextView set3 ;
-         public  TextView set4 ;
-         public TextView set5;
-         public TextView set6;
-         public  TextView dash1 ;
-         public  TextView dash2 ;
-         public TextView dash3;
+    class resultadapterviewholder extends RecyclerView.ViewHolder {
+        public TextView set1;
+        public TextView set2;
+        public TextView set3;
+        public TextView set4;
+        public TextView set5;
+        public TextView set6;
+        public TextView dash1;
+        public TextView dash2;
+        public TextView dash3;
 
-        public resultadapterviewholder(View view){
+        public resultadapterviewholder(View view) {
             super(view);
             set1 = itemView.findViewById(R.id.home_score1);
             set2 = itemView.findViewById(R.id.away_score1);
@@ -174,18 +160,18 @@ public class ScheduleMainAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             set4 = itemView.findViewById(R.id.away_scoretwo);
             set5 = itemView.findViewById(R.id.home_score3);
             set6 = itemView.findViewById(R.id.away_score3);
-            dash1=itemView.findViewById(R.id.dash);
-            dash2=itemView.findViewById(R.id.dash2);
+            dash1 = itemView.findViewById(R.id.dash);
+            dash2 = itemView.findViewById(R.id.dash2);
             dash3 = itemView.findViewById(R.id.dash3);
         }
     }
 
-     class Scheduleviewholder extends RecyclerView.ViewHolder{
-        public  TextView player;
-        public  TextView VS ;
-        public  TextView opponent;
+    class Scheduleviewholder extends RecyclerView.ViewHolder {
+        public TextView player;
+        public TextView VS;
+        public TextView opponent;
 
-        public Scheduleviewholder(View view){
+        public Scheduleviewholder(View view) {
             super(view);
             player = itemView.findViewById(R.id.player);
             VS = itemView.findViewById(R.id.vs);
@@ -194,4 +180,4 @@ public class ScheduleMainAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
 
-    }
+}

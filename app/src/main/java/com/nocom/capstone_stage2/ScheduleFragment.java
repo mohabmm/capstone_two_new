@@ -31,8 +31,7 @@ import java.util.List;
  */
 
 
-
-public class ScheduleFragment extends Fragment  {
+public class ScheduleFragment extends Fragment {
 
 
     public static final String SHARED_PREFS_KEY = "SHARED_PREFS_KEY";
@@ -52,17 +51,14 @@ public class ScheduleFragment extends Fragment  {
     List<Schedule> listItems = new ArrayList<>();
     long savedMillis;
     Parcelable savedRecyclerLayoutState;
-    TextView emptytextview ;
+    TextView emptytextview;
     Bundle bundle;
     ScheduleMainAdapter ScheduleAdapter;
-    // the problem i think is here
-    ArrayList<CollectionSchedule> recepieList ;
-    String savedTime;
-    //ScheduleMainAdapter adapter ;
-    // remeber to remove and change this trial
-    // String trial = "http://api.sportradar.us/tennis-t2/en/schedules/2018-01-28/results.json?api_key=qcxx9ms27b2mnjvmj5db737u";
 
-    String DailyResult = "http://api.sportradar.us/tennis-t2/en/schedules/" + savedTime + "/results.json?api_key=qcxx9ms27b2mnjvmj5db737u";
+    ArrayList<CollectionSchedule> recepieList;
+    String savedTime;
+
+    String DailyResult = "http://api.sportradar.us/tennis-t2/en/schedules/" + savedTime + "/results.json?api_key=regz4ypwqjdq2h43d6d66kkh";
     public LoaderManager.LoaderCallbacks<ArrayList<CollectionSchedule>> loaderone = new LoaderManager.LoaderCallbacks<ArrayList<CollectionSchedule>>() {
         @Override
         public android.support.v4.content.Loader<ArrayList<CollectionSchedule>> onCreateLoader(int id, Bundle args) {
@@ -89,7 +85,7 @@ public class ScheduleFragment extends Fragment  {
 ///////////////// update the adapter after wayching the tutorial /////////////
                 ScheduleAdapter.setWeatherData(data);
 
-                //  ScheduleRecycleView.setAdapter(ScheduleAdapter);
+
 
 
             } else {
@@ -108,7 +104,7 @@ public class ScheduleFragment extends Fragment  {
 
 
     };
-    //   LoaderManager loaderManager;
+
     TextView emptytext;
     ProgressBar progressBar;
     private Toast mToast;
@@ -118,8 +114,6 @@ public class ScheduleFragment extends Fragment  {
         View view = inflater.inflate(R.layout.schedulefragment, container, false);
         final Intent intentThatStartedThisActivity = getActivity().getIntent();
         savedMillis = System.currentTimeMillis();
-
-        //  double t0 = System.currentTimeMillis(), t1;
 
 
         if (savedInstanceState != null) {
@@ -134,7 +128,6 @@ public class ScheduleFragment extends Fragment  {
 
 
         }
-
 
 
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -158,71 +151,36 @@ public class ScheduleFragment extends Fragment  {
             savedTime = sdf.format(c.getTime());
             Log.i("savedtime", savedTime);
 
-            DailyResult = "http://api.sportradar.us/tennis-t2/en/schedules/" + savedTime + "/results.json?api_key=qcxx9ms27b2mnjvmj5db737u";
-
-            //DailyScheduleWebsite = "http://api.sportradar.us/tennis-t2/en/schedules/"+savedTime+"/schedule.json?api_key=qcxx9ms27b2mnjvmj5db737u";
+            DailyResult = "http://api.sportradar.us/tennis-t2/en/schedules/" + savedTime + "/results.json?api_key=regz4ypwqjdq2h43d6d66kkh";
 
 
-        }
+        } else {
 
 
-        //    http://api.sportradar.us/tennis-t2/en/schedules/2018-02-11/schedule.json?api_key=qcxx9ms27b2mnjvmj5db737u
-
-
-
-        else {
-
-
-
-            Toast.makeText(getContext(),"time dont pass",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "time dont pass", Toast.LENGTH_SHORT).show();
             // the date havenot changed query for current date
 
-            DailyResult = "http://api.sportradar.us/tennis-t2/en/schedules/" + savedTime + "/results.json?api_key=qcxx9ms27b2mnjvmj5db737u";
+            DailyResult = "http://api.sportradar.us/tennis-t2/en/schedules/" + savedTime + "/results.json?api_key=regz4ypwqjdq2h43d6d66kkh";
         }
 
 
-
-
-
-
-
-
-
-
-
-
-        //   progressBar = view. findViewById(R.id.schedulespinner);
-        //   emptytext = view. findViewById(R.id.sechudleempty);
-        ScheduleRecycleView =  view.findViewById(R.id.sechedulerecycle);
-
+        ScheduleRecycleView = view.findViewById(R.id.sechedulerecycle);
 
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
 
         ScheduleRecycleView.setLayoutManager(linearLayoutManager);
-        // update the adapter aftr watchin the tutorial
+
         ScheduleAdapter = new ScheduleMainAdapter(getActivity(), recepieList);
         ScheduleRecycleView.setAdapter(ScheduleAdapter);
-
-        //  ScheduleRecycleView.setItemViewCacheSize(20);
-
-        // ScheduleRecycleView.setNestedScrollingEnabled(false);
 
 
         getLoaderManager().initLoader(MOVIE_LOADER_ID, null, loaderone);
 
 
-
-
-
-
-
-
-
-
         connect();
 
-        return view ;
+        return view;
     }
 
     public void connect() {

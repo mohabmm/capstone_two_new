@@ -15,13 +15,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-class WomenRankingAdapter extends RecyclerView.Adapter<WomenRankingAdapter.resultadapterviewholder>  {
+class WomenRankingAdapter extends RecyclerView.Adapter<WomenRankingAdapter.resultadapterviewholder> {
     static private ListItemClickListener mOnClickListener;
 
 
     Context mContext;
-     ArrayList<RankingWomen> results;
-
+    ArrayList<RankingWomen> results;
 
 
     public WomenRankingAdapter(ArrayList<RankingWomen> items, Context context) {
@@ -49,7 +48,6 @@ class WomenRankingAdapter extends RecyclerView.Adapter<WomenRankingAdapter.resul
     public void onBindViewHolder(resultadapterviewholder holder, int position) {
 
 
-
         final RankingWomen currentrankingWomen = results.get(position);
 
         String name = currentrankingWomen.getWomenname();
@@ -58,22 +56,13 @@ class WomenRankingAdapter extends RecyclerView.Adapter<WomenRankingAdapter.resul
         String nationality = currentrankingWomen.getWomennationality();
 
 
-
-
         holder.nametextview.setText(name);
         holder.rankmentextview.setText(String.valueOf(rankWomen));
         holder.pointsmentextview.setText(String.valueOf(pointsWomen));
         holder.nationalitytextview.setText(nationality);
 
 
-        // holder.set1.setText(currentNews.getMhomescore());
-        // holder.set2.setText(currentNews.getset2());
-
-
-
     }
-
-
 
 
     @Override
@@ -86,7 +75,7 @@ class WomenRankingAdapter extends RecyclerView.Adapter<WomenRankingAdapter.resul
 
     public void setWeatherData(ArrayList<RankingWomen> weatherData) {
 
-       // Toast.makeText(mContext,"aywa ana gwa schedule fragemnt",Toast.LENGTH_SHORT).show();
+
         results = weatherData;
         notifyDataSetChanged();
     }
@@ -96,13 +85,13 @@ class WomenRankingAdapter extends RecyclerView.Adapter<WomenRankingAdapter.resul
     }
 
 
-    public  class resultadapterviewholder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class resultadapterviewholder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
 
         public TextView nametextview;
-        public  TextView rankmentextview ;
-        public  TextView pointsmentextview ;
-        public  TextView nationalitytextview ;
+        public TextView rankmentextview;
+        public TextView pointsmentextview;
+        public TextView nationalitytextview;
 
         public resultadapterviewholder(View itemView) {
             super(itemView);

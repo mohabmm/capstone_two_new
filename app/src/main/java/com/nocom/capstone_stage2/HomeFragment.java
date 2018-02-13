@@ -7,12 +7,10 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,8 +33,7 @@ import java.util.ArrayList;
  */
 
 
-
-public class HomeFragment extends Fragment  {
+public class HomeFragment extends Fragment {
 
 
     public static final String PLAY_BACK_POSTION = "playbackpstion";
@@ -44,21 +41,17 @@ public class HomeFragment extends Fragment  {
     private static final String JOB_TAG = "my_job_tag";
     private static final String BUNDLE_RECYCLER_LAYOUT = "classname.recycler.layout";
     static Cursor c;
-    final String BakingWebsite = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=tennis&?sort=newest&api-key=23b843ce687642739ffbbd75bc779a84";
+    final String ARTICLESWebsite = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=tennis&?sort=newest&api-key=23b843ce687642739ffbbd75bc779a84";
     private final String LOG_TAG = HomeLoader.class.getName();
     //  ArrayList<Recipe> mNewsData;
     public RecyclerView mrecyclerview;
     public boolean isFavorite = true;
     public FirebaseJobDispatcher jobDispatcher;
-    Home home;
-    FloatingActionButton toggleButton ;
     Parcelable savedRecyclerLayoutState;
-    TextView emptytextview ;
+    TextView emptytextview;
     Bundle bundle;
     HomeAdapter mMainAdapter;
-    // the problem i think is here
-    ArrayList<Home> recepieList ;
- //   LoaderManager loaderManager;
+    ArrayList<Home> recepieList;
     TextView emptytext;
     ProgressBar progressBar;
     public LoaderManager.LoaderCallbacks<ArrayList<Home>> loaderone = new LoaderManager.LoaderCallbacks<ArrayList<Home>>() {
@@ -66,7 +59,7 @@ public class HomeFragment extends Fragment  {
         public android.support.v4.content.Loader<ArrayList<Home>> onCreateLoader(int id, Bundle args) {
             // Create a new loader for the given URL
 
-            return new HomeLoader(getActivity(), BakingWebsite);
+            return new HomeLoader(getActivity(), ARTICLESWebsite);
         }
 
         @Override
@@ -90,7 +83,7 @@ public class HomeFragment extends Fragment  {
             } else {
                 recepieList = data;
 
-                Log.i("moha", "e7na gwa al else ");
+
 
             }
 
@@ -103,7 +96,7 @@ public class HomeFragment extends Fragment  {
 
 
     };
-    private Toast mToast;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -111,8 +104,6 @@ public class HomeFragment extends Fragment  {
 
 
         if (savedInstanceState != null) {
-
-            Toast.makeText(getContext(), "on activity created is used ", Toast.LENGTH_SHORT).show();
 
 
             savedRecyclerLayoutState = savedInstanceState.getParcelable(BUNDLE_RECYCLER_LAYOUT);
@@ -124,27 +115,20 @@ public class HomeFragment extends Fragment  {
         }
 
 
-        progressBar = view. findViewById(R.id.loading_spinner);
-        emptytext = view. findViewById(R.id.empty_view);
-        mrecyclerview =  view.findViewById(R.id.mrecycle);
+        progressBar = view.findViewById(R.id.loading_spinner);
+        emptytext = view.findViewById(R.id.empty_view);
+        mrecyclerview = view.findViewById(R.id.mrecycle);
 
         jobDispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(getContext()));
-
 
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
 
         mrecyclerview.setLayoutManager(linearLayoutManager);
-        mMainAdapter = new HomeAdapter(recepieList,getContext());
+        mMainAdapter = new HomeAdapter(recepieList, getContext());
         mrecyclerview.setAdapter(mMainAdapter);
 
         getLoaderManager().initLoader(MOVIE_LOADER_ID, null, loaderone);
-
-
-
-
-
-
 
 
         connect();
@@ -152,9 +136,7 @@ public class HomeFragment extends Fragment  {
         startjob();
 
 
-      //  onToggleClicked();
-
-        return view ;
+        return view;
     }
 
     public void connect() {
@@ -175,7 +157,7 @@ public class HomeFragment extends Fragment  {
         } else {
             // Otherwise, display error
             // First, hide loading indicator so error message will be visible
-         //   emptytext.setText("No Internet Connection ");
+
             emptytextview.setText("no onternet conection ");
             progressBar.setVisibility(View.INVISIBLE);
 
@@ -195,14 +177,13 @@ public class HomeFragment extends Fragment  {
                 // that means i want the job to be repeated
                         setRecurring(true).
                         setTag(JOB_TAG).
-                // i want to start the job in 10 seconds and i want to repeat the job every 15 seconds
-                        setTrigger(Trigger.executionWindow(1,3)).
+                // i want to start the job in 10 seconds and i want to repeat the job every 180 seconds
+                        setTrigger(Trigger.executionWindow(10, 180)).
                         setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL).
                         setConstraints(Constraint.ON_ANY_NETWORK).
                         setReplaceCurrent(false).build();
         jobDispatcher.mustSchedule(job);
-        Toast.makeText(getContext(),"Job Scheduled from capstone started job ",Toast.LENGTH_SHORT).show();
-
+        Toast.makeText(getContext(), "Job Scheduled from capstone started job ", Toast.LENGTH_SHORT).show();
 
 
     }
@@ -231,9 +212,6 @@ public class HomeFragment extends Fragment  {
             savedRecyclerLayoutState = savedInstanceState.getParcelable(BUNDLE_RECYCLER_LAYOUT);
         }
     }
-
-
-
 
 
 }

@@ -14,7 +14,6 @@ import com.viksaa.sssplash.lib.model.ConfigSplash;
 public class splash extends AwesomeSplash {
 
 
-
     @Override
     public void initSplash(ConfigSplash configSplash) {
 
@@ -30,7 +29,7 @@ public class splash extends AwesomeSplash {
         //Customize Logo
         configSplash.setLogoSplash(R.drawable.tennis); //or any other drawable
         configSplash.setAnimLogoSplashDuration(2000); //int ms
-        configSplash.setAnimLogoSplashTechnique(Techniques.FlipOutX); //choose one form Techniques (ref: https://github.com/daimajia/AndroidViewAnimations)
+        configSplash.setAnimLogoSplashTechnique(Techniques.Landing); //choose one form Techniques (ref: https://github.com/daimajia/AndroidViewAnimations)
 
 
         //Customize Path

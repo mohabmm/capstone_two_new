@@ -6,6 +6,7 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.widget.ListView;
 
@@ -20,21 +21,23 @@ import database.TennisDBHelper;
 public class Favorites extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     private static final int MLoader = 3;
     MovieCursorAdapter tennisCursorAdapter;
-    //Context context =  this ;
-    //Button button ;
-    //Cursor c;
+    CardView cardView;
+
     private TennisDBHelper dbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_favorites);
         getLoaderManager().initLoader(MLoader, null, this);
-        ListView listView = (ListView) findViewById(R.id.favoriteList);
+        ListView listView = findViewById(R.id.favoriteList);
         tennisCursorAdapter = new MovieCursorAdapter(this, null);
+        cardView = findViewById(R.id.card);
         listView.setAdapter(tennisCursorAdapter);
-        //   button= (Button)findViewById(R.id.delete);
+
         dbHelper = new TennisDBHelper(this);
     }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -42,6 +45,7 @@ public class Favorites extends AppCompatActivity implements LoaderManager.Loader
         getLoaderManager().restartLoader(MLoader, null, this);
 
     }
+
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         return new AsyncTaskLoader<Cursor>(this) {
@@ -60,6 +64,7 @@ public class Favorites extends AppCompatActivity implements LoaderManager.Loader
                     forceLoad();
                 }
             }
+
             // loadInBackground() performs asynchronous loading of data
             @Override
             public Cursor loadInBackground() {
@@ -85,12 +90,13 @@ public class Favorites extends AppCompatActivity implements LoaderManager.Loader
             }
         };
     }
+
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         tennisCursorAdapter.swapCursor(data);
-      //  HomeFragment.isFavorite = true;
         tennisCursorAdapter.notifyDataSetChanged();
     }
+
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
         tennisCursorAdapter.swapCursor(null);
