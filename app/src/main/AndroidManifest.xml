@@ -41,7 +41,7 @@
             </intent-filter>
 
             <meta-data android:name="android.appwidget.provider"
-                android:resource="@xml/tennis_widget_info" />
+                android:resource="@xml/ingrdient_widget_info" />
 
         </receiver>
         <!-- 2. The service that will send our collection data to our widget. It needs the
