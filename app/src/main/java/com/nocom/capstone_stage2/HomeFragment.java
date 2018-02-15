@@ -16,7 +16,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.firebase.jobdispatcher.Constraint;
 import com.firebase.jobdispatcher.FirebaseJobDispatcher;
@@ -43,12 +42,10 @@ public class HomeFragment extends Fragment {
     static Cursor c;
     final String ARTICLESWebsite = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=tennis&?sort=newest&api-key=23b843ce687642739ffbbd75bc779a84";
     private final String LOG_TAG = HomeLoader.class.getName();
-    //  ArrayList<Recipe> mNewsData;
     public RecyclerView mrecyclerview;
     public boolean isFavorite = true;
     public FirebaseJobDispatcher jobDispatcher;
     Parcelable savedRecyclerLayoutState;
-    TextView emptytextview;
     Bundle bundle;
     HomeAdapter mMainAdapter;
     ArrayList<Home> recepieList;
@@ -82,7 +79,6 @@ public class HomeFragment extends Fragment {
 
             } else {
                 recepieList = data;
-
 
 
             }
@@ -158,7 +154,7 @@ public class HomeFragment extends Fragment {
             // Otherwise, display error
             // First, hide loading indicator so error message will be visible
 
-            emptytextview.setText("no onternet conection ");
+            emptytext.setText(getString(R.string.internetconnctionmessage));
             progressBar.setVisibility(View.INVISIBLE);
 
             // Update empty state with no connection error message
@@ -183,7 +179,6 @@ public class HomeFragment extends Fragment {
                         setConstraints(Constraint.ON_ANY_NETWORK).
                         setReplaceCurrent(false).build();
         jobDispatcher.mustSchedule(job);
-        Toast.makeText(getContext(), "Job Scheduled from capstone started job ", Toast.LENGTH_SHORT).show();
 
 
     }

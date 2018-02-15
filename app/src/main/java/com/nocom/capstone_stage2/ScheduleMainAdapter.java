@@ -109,7 +109,7 @@ public class ScheduleMainAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         if (user != null) {
 
             vh1.player.setText(user.getMnamehome());
-            vh1.VS.setText("VS");
+            vh1.VS.setText(context.getString(R.string.vs));
             vh1.opponent.setText(user.getMnameaway());
         }
     }

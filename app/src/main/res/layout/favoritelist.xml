@@ -25,6 +25,7 @@
             app:riv_mutate_background="true"
             app:riv_oval="true"
             app:riv_tile_mode="repeat" />
+
         <TextView
             android:id="@+id/title"
             style="@style/TextAppearance.AppCompat.Subhead"
@@ -33,7 +34,6 @@
 
             android:contentDescription="@string/title"
             android:ellipsize="end"
-
 
 
             android:paddingBottom="4dp"

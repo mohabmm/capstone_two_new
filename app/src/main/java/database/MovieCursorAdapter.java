@@ -22,6 +22,7 @@ public class MovieCursorAdapter extends CursorAdapter {
     public MovieCursorAdapter(Context context, Cursor c) {
         super(context, c, 0 /* flags */);
     }
+
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
         return LayoutInflater.from(context).inflate(R.layout.favoritelist, parent, false);
@@ -39,9 +40,9 @@ public class MovieCursorAdapter extends CursorAdapter {
      */
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        TextView title = (TextView) view.findViewById(R.id.title);
-        TextView subtitle = (TextView) view.findViewById(R.id.subtitle);
-        ImageView myimage = (ImageView) view.findViewById(R.id.thumbnail);
+        TextView title = view.findViewById(R.id.title);
+        TextView subtitle = view.findViewById(R.id.subtitle);
+        ImageView myimage = view.findViewById(R.id.thumbnail);
 
         // Extract properties from cursor
         int DescribtionColumnIndex = cursor.getColumnIndex(TennisContract.TennisEntry.COLUMN_DESCRIBTION);
@@ -53,8 +54,7 @@ public class MovieCursorAdapter extends CursorAdapter {
         String ColumnShortDescribtion = cursor.getString(ShortDescribtionColumnIndex);
         String ColumnImage = cursor.getString(imageColumnIndex);
 
-        String myimage2 ="https://static01.nyt.com/"+ColumnImage.replace("master768","articleLarge");
-
+        String myimage2 = "https://static01.nyt.com/" + ColumnImage.replace("master768", "articleLarge");
 
 
         Picasso.with(context).load(myimage2)

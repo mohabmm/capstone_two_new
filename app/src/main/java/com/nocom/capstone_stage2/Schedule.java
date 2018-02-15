@@ -6,10 +6,10 @@ package com.nocom.capstone_stage2;
 
 public class Schedule {
     String mname;
-    
+
     public Schedule(String name) {
 
-        mname = name ;
+        mname = name;
 
     }
 

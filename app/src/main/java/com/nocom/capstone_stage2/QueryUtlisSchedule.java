@@ -1,5 +1,3 @@
-
-
 package com.nocom.capstone_stage2;
 
 import android.text.TextUtils;
@@ -135,13 +133,11 @@ public final class QueryUtlisSchedule {
                 JSONObject currentSportEventStatus = currentresult.getJSONObject("sport_event_status");
 
 
-                String homescore2=null;
-                String awayscore2=null;
+                String homescore2 = null;
+                String awayscore2 = null;
                 String homescore3 = null;
                 String awayscore3 = null;
-                if(!(currentSportEventStatus.optString("period_scores").equals("")))  {
-
-
+                if (!(currentSportEventStatus.optString("period_scores").equals(""))) {
 
 
                     period_scores = currentSportEventStatus.optJSONArray("period_scores");
@@ -158,15 +154,15 @@ public final class QueryUtlisSchedule {
 
                     if (!(currentSportEventStatus.optString("period_scores").equals(""))) {
 
-                    for (int k = 1; k < 2; k++) {
+                        for (int k = 1; k < 2; k++) {
 
 
-                        JSONObject currentperiodscore = period_scores.getJSONObject(k);
-                        homescore2 = currentperiodscore.optString("home_score");
-                        awayscore2 = currentperiodscore.optString("away_score");
+                            JSONObject currentperiodscore = period_scores.getJSONObject(k);
+                            homescore2 = currentperiodscore.optString("home_score");
+                            awayscore2 = currentperiodscore.optString("away_score");
 
+                        }
                     }
-                }
 
 
                     for (int k = 2; k <= 3; k++) {
@@ -184,20 +180,17 @@ public final class QueryUtlisSchedule {
                     }
 
 
-                //   mySchedule = new ArrayList<Schedule>(); // used to get the player names
+                    //   mySchedule = new ArrayList<Schedule>(); // used to get the player names
 
-                for (int j = 0; j < 1; j++) {
+                    for (int j = 0; j < 1; j++) {
 
-                    JSONObject currentcompetitors = competitors.getJSONObject(j);
-                    name = currentcompetitors.getString("name");
-                    Log.i("the player name is ", name);
-                }
-
-
+                        JSONObject currentcompetitors = competitors.getJSONObject(j);
+                        name = currentcompetitors.getString("name");
+                        Log.i("the player name is ", name);
                     }
 
 
-
+                }
 
 
                 String away = null;

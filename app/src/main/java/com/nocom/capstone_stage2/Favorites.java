@@ -20,10 +20,9 @@ import database.TennisDBHelper;
 
 public class Favorites extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     private static final int MLoader = 3;
+    public TennisDBHelper dbHelper;
     MovieCursorAdapter tennisCursorAdapter;
     CardView cardView;
-
-    private TennisDBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

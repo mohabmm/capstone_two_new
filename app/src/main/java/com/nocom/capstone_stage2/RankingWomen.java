@@ -14,10 +14,10 @@ public class RankingWomen {
 
     public RankingWomen(int mrankwomen, int mpointswomen, String mwomenname, String mwomennationality) {
 
-        rankwomen =mrankwomen;
-        pointswomen=mpointswomen;
-        womenname=mwomenname;
-        womennationality=mwomennationality;
+        rankwomen = mrankwomen;
+        pointswomen = mpointswomen;
+        womenname = mwomenname;
+        womennationality = mwomennationality;
     }
 
     public int getPointswomen() {

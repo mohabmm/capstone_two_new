@@ -8,7 +8,7 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 
-public  class RankingMenLoader extends AsyncTaskLoader<ArrayList<RankingMen>> {
+public class RankingMenLoader extends AsyncTaskLoader<ArrayList<RankingMen>> {
     private static final String LOG_TAG = ScheduleLoader.class.getName();
     ArrayList<RankingMen> mNewsData;
     private String murl;
@@ -17,6 +17,7 @@ public  class RankingMenLoader extends AsyncTaskLoader<ArrayList<RankingMen>> {
         super(context);
         murl = url;
     }
+
     @Override
     protected void onStartLoading() {
 
@@ -27,10 +28,11 @@ public  class RankingMenLoader extends AsyncTaskLoader<ArrayList<RankingMen>> {
 
         }
     }
+
     @Override
     public ArrayList<RankingMen> loadInBackground() {
 
-        if (Looper.myLooper()==null)
+        if (Looper.myLooper() == null)
             Looper.prepare();
         // Perform the network request, parse the response, and extract a list of movies.
         ArrayList<RankingMen> movies = null;

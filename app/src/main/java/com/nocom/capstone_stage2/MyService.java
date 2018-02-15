@@ -1,7 +1,6 @@
 package com.nocom.capstone_stage2;
 
 import android.os.AsyncTask;
-import android.widget.Toast;
 
 import com.firebase.jobdispatcher.JobParameters;
 import com.firebase.jobdispatcher.JobService;
@@ -15,7 +14,7 @@ public class MyService extends JobService {
     /**
      * The entry point to your Job. Implementations should offload work to another thread of
      * execution as soon as possible.
-     *
+     * <p>
      * This is called by the Job Dispatcher to tell us we should start our job. Keep in mind this
      * method is run on the application's main thread, so we need to offload work to a background
      * thread.
@@ -25,8 +24,9 @@ public class MyService extends JobService {
     @Override
     public boolean onStartJob(final JobParameters jobParameters) {
 
-        mFetchWeatherTask = new AsyncTask<Void, Void, Void>(){
+        mFetchWeatherTask = new AsyncTask<Void, Void, Void>() {
             String website = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=tennis&?sort=newest&api-key=23b843ce687642739ffbbd75bc779a84";
+
             @Override
             protected Void doInBackground(Void... voids) {
                 try {
@@ -41,7 +41,6 @@ public class MyService extends JobService {
 
             @Override
             protected void onPostExecute(Void aVoid) {
-                Toast.makeText(getApplicationContext(),"job finished ",Toast.LENGTH_SHORT).show();
                 jobFinished(jobParameters, false);
             }
         };

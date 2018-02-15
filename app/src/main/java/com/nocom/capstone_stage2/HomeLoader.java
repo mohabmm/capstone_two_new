@@ -8,7 +8,7 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 
-public class  HomeLoader extends AsyncTaskLoader<ArrayList<Home>> {
+public class HomeLoader extends AsyncTaskLoader<ArrayList<Home>> {
     private static final String LOG_TAG = HomeLoader.class.getName();
     ArrayList<Home> mNewsData;
     private String murl;
@@ -17,6 +17,7 @@ public class  HomeLoader extends AsyncTaskLoader<ArrayList<Home>> {
         super(context);
         murl = url;
     }
+
     @Override
     protected void onStartLoading() {
 
@@ -27,10 +28,11 @@ public class  HomeLoader extends AsyncTaskLoader<ArrayList<Home>> {
 
         }
     }
+
     @Override
     public ArrayList<Home> loadInBackground() {
 
-        if (Looper.myLooper()==null)
+        if (Looper.myLooper() == null)
             Looper.prepare();
         // Perform the network request, parse the response, and extract a list of movies.
         ArrayList<Home> movies = null;

@@ -10,14 +10,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -30,7 +26,6 @@ import java.util.ArrayList;
  */
 
 
-
 public class RankingFragment extends Fragment {
 
     private static final int MOVIE1_LOADER_ID = 1;
@@ -41,12 +36,11 @@ public class RankingFragment extends Fragment {
     Button Atp;
     Button Wta;
     Parcelable savedRecyclerLayoutState;
-    TextView emptytextview ;
     Bundle bundle;
     MenRankingAdapter menRankingAdapter;
     WomenRankingAdapter womenRankingAdapter;
 
-    ArrayList<RankingMen> recepieList ;
+    ArrayList<RankingMen> recepieList;
     public LoaderManager.LoaderCallbacks<ArrayList<RankingMen>> loaderone = new LoaderManager.LoaderCallbacks<ArrayList<RankingMen>>() {
         @Override
         public android.support.v4.content.Loader<ArrayList<RankingMen>> onCreateLoader(int id, Bundle args) {
@@ -57,8 +51,6 @@ public class RankingFragment extends Fragment {
 
         @Override
         public void onLoadFinished(android.support.v4.content.Loader<ArrayList<RankingMen>> loader, ArrayList<RankingMen> data) {
-
-
 
 
             if (savedRecyclerLayoutState != null) {
@@ -75,7 +67,6 @@ public class RankingFragment extends Fragment {
             } else {
                 recepieList = data;
 
-                Log.i("moha", "e7na gwa al else ");
 
             }
 
@@ -88,7 +79,7 @@ public class RankingFragment extends Fragment {
 
 
     };
-    ArrayList<RankingWomen> recepieList2 ;
+    ArrayList<RankingWomen> recepieList2;
     public LoaderManager.LoaderCallbacks<ArrayList<RankingWomen>> loadertwo = new LoaderManager.LoaderCallbacks<ArrayList<RankingWomen>>() {
         @Override
         public android.support.v4.content.Loader<ArrayList<RankingWomen>> onCreateLoader(int id, Bundle args) {
@@ -115,7 +106,6 @@ public class RankingFragment extends Fragment {
             } else {
                 recepieList2 = data2;
 
-                Log.i("moha", "e7na gwa al else ");
 
             }
 
@@ -128,19 +118,13 @@ public class RankingFragment extends Fragment {
 
 
     };
-    TextView emptytext;
-    ProgressBar progressBar;
 
-
-    // loader one for menatp
-    // loader two for womenatp
     private FirebaseAnalytics mFirebaseAnalytics;
-    private Toast mToast;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.ranking,container,false);
+        View view = inflater.inflate(R.layout.ranking, container, false);
         AdView mAdView = view.findViewById(R.id.adView);
         // Create an ad request. Check logcat output for the hashed device ID to
         // get test ads on a physical device. e.g.
@@ -153,8 +137,6 @@ public class RankingFragment extends Fragment {
 
         if (savedInstanceState != null) {
 
-            Toast.makeText(getContext(), "on activity created is used ", Toast.LENGTH_SHORT).show();
-
 
             savedRecyclerLayoutState = savedInstanceState.getParcelable(BUNDLE_RECYCLER_LAYOUT);
 
@@ -162,17 +144,15 @@ public class RankingFragment extends Fragment {
         }
 
 
-        progressBar = view. findViewById(R.id.loading_spinner);
-        emptytext = view. findViewById(R.id.empty_view);
-        mrecyclerview =  view.findViewById(R.id.mrecycle);
+        mrecyclerview = view.findViewById(R.id.mrecycle);
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
 
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
 
         mrecyclerview.setLayoutManager(linearLayoutManager);
-        menRankingAdapter = new MenRankingAdapter(recepieList,getContext());
-        womenRankingAdapter = new WomenRankingAdapter(recepieList2,getContext());
+        menRankingAdapter = new MenRankingAdapter(recepieList, getContext());
+        womenRankingAdapter = new WomenRankingAdapter(recepieList2, getContext());
 
 
         Atp = view.findViewById(R.id.ATP);
@@ -183,8 +163,10 @@ public class RankingFragment extends Fragment {
         getLoaderManager().initLoader(MOVIE1_LOADER_ID, null, loaderone);
 
 
-        String id = "womenranking";
-        String name = "wta women ranking result";
+        String id = (getString(R.string.womenranking));
+
+
+        String name = (getString(R.string.womenrankingresult));
         Bundle bundle = new Bundle();
         bundle.putString(FirebaseAnalytics.Param.ITEM_ID, id);
         bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, name);
@@ -203,14 +185,12 @@ public class RankingFragment extends Fragment {
                 getLoaderManager().initLoader(MOVIE1_LOADER_ID, null, loaderone);
 
 
-                String id = "womenranking";
-                String name = "wta women ranking result";
+                String id = (getString(R.string.womenranking));
+                String name = (getString(R.string.womenrankingresult));
                 Bundle bundle = new Bundle();
-                bundle.putString(FirebaseAnalytics.Param.ITEM_ID,id );
-                bundle.putString(FirebaseAnalytics.Param.ITEM_NAME,name );
+                bundle.putString(FirebaseAnalytics.Param.ITEM_ID, id);
+                bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, name);
                 mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
-
-
 
 
                 connect();
@@ -229,7 +209,6 @@ public class RankingFragment extends Fragment {
                 getLoaderManager().initLoader(MOVIE2_LOADER_ID, null, loadertwo);
 
 
-
                 connect();
 
 
@@ -237,9 +216,7 @@ public class RankingFragment extends Fragment {
         });
 
 
-
-
-        return view ;
+        return view;
     }
 
     public void connect() {
@@ -257,13 +234,6 @@ public class RankingFragment extends Fragment {
             // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
             // because this activity implements the LoaderCallbacks interface).
             loaderManager.restartLoader(MOVIE1_LOADER_ID, bundle, loaderone);
-        } else {
-            // Otherwise, display error
-            // First, hide loading indicator so error message will be visible
-
-            emptytextview.setText("no onternet conection ");
-            progressBar.setVisibility(View.INVISIBLE);
-
         }
 
     }
@@ -290,9 +260,6 @@ public class RankingFragment extends Fragment {
             savedRecyclerLayoutState = savedInstanceState.getParcelable(BUNDLE_RECYCLER_LAYOUT);
         }
     }
-
-
-
 
 
 }

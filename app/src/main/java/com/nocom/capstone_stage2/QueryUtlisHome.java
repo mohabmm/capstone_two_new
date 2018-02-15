@@ -20,12 +20,12 @@ import java.util.ArrayList;
 
 public final class QueryUtlisHome {
 
+    static final String LOG_TAG = QueryUtlisHome.class.getSimpleName();
     String weburl;
-
-     static final String LOG_TAG = QueryUtlisHome.class.getSimpleName();
 
     private QueryUtlisHome() {
     }
+
     public static ArrayList<Home> featchrecipedata(String requestUrl) throws JSONException {
 
         URL url = createUrl(requestUrl);
@@ -51,6 +51,7 @@ public final class QueryUtlisHome {
         }
         return url;
     }
+
     public static String makeHttpRequest(URL url) throws IOException {
         String jsonResponse = "";
 
@@ -116,43 +117,39 @@ public final class QueryUtlisHome {
 
         try {
 
-            //       // Create a JSONObject from the SAMPLE_JSON_RESPONSE string
-            //    -JSONObject baseJsonResponse = new JSONObject(SAMPLE_JSON_RESPONSE);
-            // Create a JSONObject from the JSON response string
+
             JSONObject baseJsonResponse = new JSONObject(tennisjson);
             JSONObject responceobject = baseJsonResponse.getJSONObject("response");
             JSONArray docs = responceobject.getJSONArray("docs");
-            for (int i=0; i<docs.length(); i++){
+            for (int i = 0; i < docs.length(); i++) {
 
                 JSONObject currentdocs = docs.getJSONObject(i);
 
-                String weburl = currentdocs.getString( "web_url"); // weburl
-                Log.i("weburl",weburl);
+                String weburl = currentdocs.getString("web_url"); // weburl
+                Log.i("weburl", weburl);
 
                 String snippetarticledetail = currentdocs.getString("snippet"); // snippet tmam fy sleem
 
 
                 JSONObject headlines = currentdocs.getJSONObject("headline");
-                String articleheadline =  headlines.getString("print_headline"); // headline tmam fy sleem
+                String articleheadline = headlines.getString("print_headline"); // headline tmam fy sleem
 
-                Log.i("articleheadline",articleheadline);
+                Log.i("articleheadline", articleheadline);
 
-               JSONArray multimedia = currentdocs.getJSONArray("multimedia");
-              //  for(int j=0; j<multimedia.length();j++ ){
+                JSONArray multimedia = currentdocs.getJSONArray("multimedia");
 
-                   JSONObject firstmultimedia = multimedia.getJSONObject(0);
-                   String imageurl = firstmultimedia.getString("url");
-                   Log.i("IMAGEURL",imageurl);
-
-
-                    Home tennis = new Home(weburl,snippetarticledetail,articleheadline,imageurl);
+                JSONObject firstmultimedia = multimedia.getJSONObject(0);
+                String imageurl = firstmultimedia.getString("url");
+                Log.i("IMAGEURL", imageurl);
 
 
-                    list.add(tennis);
+                Home tennis = new Home(weburl, snippetarticledetail, articleheadline, imageurl);
 
 
-                }
+                list.add(tennis);
 
+
+            }
 
 
             //}
@@ -170,8 +167,5 @@ public final class QueryUtlisHome {
     }
 
 
-
-
-
-    }
+}
 

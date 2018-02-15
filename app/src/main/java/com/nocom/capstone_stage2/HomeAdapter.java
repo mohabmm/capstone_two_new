@@ -1,4 +1,3 @@
-
 package com.nocom.capstone_stage2;
 
 import android.content.ContentValues;
@@ -10,7 +9,6 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -87,7 +85,7 @@ class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.adapterViewHolder> {
 
                     Uri uri = mContext.getContentResolver().insert(TennisContract.TennisEntry.CONTENT_URI, contentValues);
                     if (uri != null) {
-                        Toast.makeText(mContext, "movie is added ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, (mContext.getString(R.string.movie_added)), Toast.LENGTH_SHORT).show();
 
 
                     }
@@ -99,7 +97,7 @@ class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.adapterViewHolder> {
                     String selection = TennisContract.TennisEntry.COLUMN_SHORTDESCRIBTION + "=?";
                     String[] selectionArgs = {String.valueOf(currentNews.getMarticleheadline())};
                     mContext.getContentResolver().delete(uri, selection, selectionArgs);
-                    Toast.makeText(mContext, "movie is deleted", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, (mContext.getString(R.string.movie_deleted)), Toast.LENGTH_SHORT).show();
 
 
                 }
@@ -126,9 +124,8 @@ class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.adapterViewHolder> {
 
         holder.shortdes.setText(currentNews.getMarticleheadline());
         holder.describtion.setText(currentNews.getMsnippet());
-        String temp = "https://static01.nyt.com/images/2018/01/17/sports/17tennis-men1/merlin_132343739_8018a288-07ae-48ed-ac71-deedcd7ad757-master768.jpg";
         String myimage = "https://static01.nyt.com/" + currentNews.getMimageurl().replace("master768", "articleLarge");
-        Log.i("that it pls ", myimage);
+
 
         Picasso
                 .with(holder.image.getContext())
@@ -154,8 +151,7 @@ class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.adapterViewHolder> {
     }
 
     private boolean database(Home home) {
-        //  Cursor cursor = getContentResolver().query(
-        //          MoviesContract.MoviesEntry.CONTENT_URI, null, null, null, null);
+
 
         c = mContext.getContentResolver().query(TennisContract.TennisEntry.CONTENT_URI, null, null, null, null);
         if (c != null) {
@@ -193,7 +189,7 @@ class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.adapterViewHolder> {
             floatingActionButton = itemView.findViewById(R.id.share_fab);
             button = itemView.findViewById(R.id.button);
 
-            // itemView.setOnClickListener(this);
+
         }
 
 

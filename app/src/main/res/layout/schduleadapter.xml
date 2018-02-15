@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:weightSum="3">
+
     <TextView
         android:id="@+id/player"
         android:layout_width="fill_parent"
@@ -13,8 +14,9 @@
         android:contentDescription="@string/player_name"
         android:gravity="center"
         android:padding="10dp"
-        android:textColor="@color/textcolor"
+        android:textColor="@color/text_color"
         tools:text="@string/player_name" />
+
     <TextView
         android:id="@+id/vs"
         android:layout_width="fill_parent"
@@ -24,7 +26,7 @@
 
         android:gravity="center"
         android:padding="10dp"
-        android:textColor="@color/textcolor"
+        android:textColor="@color/text_color"
         tools:text="VS" />
 
     <TextView
@@ -37,6 +39,6 @@
         android:gravity="center"
         android:padding="10dp"
         android:text="@string/player_name"
-        android:textColor="@color/textcolor" />
+        android:textColor="@color/text_color" />
 
 </LinearLayout>

@@ -13,10 +13,10 @@ public class RankingMen {
 
     public RankingMen(int lrankmen, int lpointsmen, String lmenname, String lmennationality) {
 
-        rankingmen=lrankmen;
-        pointsmen=lpointsmen;
-        menname=lmenname;
-        mennationality=lmennationality;
+        rankingmen = lrankmen;
+        pointsmen = lpointsmen;
+        menname = lmenname;
+        mennationality = lmennationality;
 
     }
 

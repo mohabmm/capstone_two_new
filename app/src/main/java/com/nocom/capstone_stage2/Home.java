@@ -7,12 +7,13 @@ package com.nocom.capstone_stage2;
 class Home {
     private String mweburl;
     private String msnippet;
-    private String mimageurl ;
+    private String mimageurl;
     private String marticleheadline;
+
     public Home(String weburl, String snippet, String articleheadline, String imageurl) {
-        mweburl=weburl;
-        msnippet=snippet;
-        marticleheadline=articleheadline;
+        mweburl = weburl;
+        msnippet = snippet;
+        marticleheadline = articleheadline;
         mimageurl = imageurl;
 
     }

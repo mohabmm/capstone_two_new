@@ -16,7 +16,7 @@
 
         android:padding="10dp"
         android:text="@string/rank_men"
-        android:textColor="@color/textcolor"
+        android:textColor="@color/text_color"
         android:textSize="20sp" />
 
     <TextView
@@ -30,7 +30,7 @@
 
         android:padding="10dp"
         android:text="@string/nationality"
-        android:textColor="@color/textcolor"
+        android:textColor="@color/text_color"
         android:textSize="20sp" />
 
     <TextView
@@ -44,7 +44,7 @@
 
         android:padding="10dp"
         android:text="@string/player_name"
-        android:textColor="@color/textcolor"
+        android:textColor="@color/text_color"
         android:textSize="20sp" />
 
     <TextView
@@ -58,6 +58,6 @@
 
         android:padding="10dp"
         android:text="@string/points"
-        android:textColor="@color/textcolor"
+        android:textColor="@color/text_color"
         android:textSize="20sp" />
 </LinearLayout>

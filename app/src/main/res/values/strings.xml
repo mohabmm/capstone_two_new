@@ -27,4 +27,12 @@
     <string name="go_to_details">go to details</string>
     <string name="Click_for_Detail">Click For Details</string>
     <string name="upcoming_matches">Upcoming Matches</string>
+    <string name="internetconnctionmessage">No Internet Connection</string>
+    <string name="womenranking">womenranking</string>
+    <string name="womenrankingresult">wta women ranking result</string>
+    <string name="movie_added">Movie is added</string>
+    <string name="movie_deleted">Movie is deleted</string>
+    <string name="article_image">article image</string>
+    <string name="button_clicked">button clicked</string>
+    <string name="welcomescreen">Welcome To Tennis World</string>
 </resources>

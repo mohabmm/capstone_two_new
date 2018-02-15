@@ -20,13 +20,12 @@ import java.util.ArrayList;
 
 public final class QueryUtlisRankingmen {
 
-    String weburl;
-
-
     static final String LOG_TAG = QueryUtlisSchedule.class.getSimpleName();
+    String weburl;
 
     private QueryUtlisRankingmen() {
     }
+
     public static ArrayList<RankingMen> featchrecipedata(String requestUrl) throws JSONException {
 
 
@@ -53,6 +52,7 @@ public final class QueryUtlisRankingmen {
         }
         return url;
     }
+
     private static String makeHttpRequest(URL url) throws IOException {
         String jsonResponse = "";
 
@@ -114,24 +114,24 @@ public final class QueryUtlisRankingmen {
         if (TextUtils.isEmpty(tennisjson)) {
             return null;
         }
-           ArrayList<RankingWomen> rankingWomenArrayList = new ArrayList<>();
+        ArrayList<RankingWomen> rankingWomenArrayList = new ArrayList<>();
         ArrayList<RankingMen> list = new ArrayList<>();
-            ArrayList<RankingMen> rankingMenArrayList = new ArrayList<>();
+        ArrayList<RankingMen> rankingMenArrayList = new ArrayList<>();
 
         try {
 
             JSONObject rootjsonobject = new JSONObject(tennisjson);
             JSONArray rankings = rootjsonobject.getJSONArray("rankings");
 
-            for (int i = 0; i<rankings.length(); i++){
+            for (int i = 0; i < rankings.length(); i++) {
 
 
-          //      if(i==0){
+                //      if(i==0){
 
-                    // here is women ranking
+                // here is women ranking
 
-                   // JSONObject currentrankingwomen = rankings.getJSONObject(0);
-                 //   JSONArray player_rankingswomen = currentrankingwomen.getJSONArray("player_rankings");
+                // JSONObject currentrankingwomen = rankings.getJSONObject(0);
+                //   JSONArray player_rankingswomen = currentrankingwomen.getJSONArray("player_rankings");
                   /*  for(int j=0;j<player_rankingswomen.length();j++){
 
                         JSONObject currentplayer_rankingswomen = player_rankingswomen.getJSONObject(j);
@@ -151,52 +151,37 @@ public final class QueryUtlisRankingmen {
 
                 }
 */
-                if (i==1){
+                if (i == 1) {
 
 
                     //  here is men
-                   // JSONObject currentrankingmen = rankings.getJSONObject(1);
+                    // JSONObject currentrankingmen = rankings.getJSONObject(1);
 
                     JSONObject currentrankingmen = rankings.getJSONObject(1);
                     JSONArray player_rankingsmen = currentrankingmen.getJSONArray("player_rankings");
-                    for(int j=0;j<player_rankingsmen.length();j++){
+                    for (int j = 0; j < player_rankingsmen.length(); j++) {
 
                         JSONObject currentplayer_rankingsmen = player_rankingsmen.getJSONObject(j);
                         int rankmen = currentplayer_rankingsmen.getInt("rank");
                         int pointsmen = currentplayer_rankingsmen.getInt("points");
                         JSONObject playermen = currentplayer_rankingsmen.getJSONObject("player");
-                        String menname =  playermen.getString("name");
+                        String menname = playermen.getString("name");
                         String mennationality = playermen.getString("nationality");
-                        RankingMen rankingmen = new RankingMen(rankmen,pointsmen,menname,mennationality);
+                        RankingMen rankingmen = new RankingMen(rankmen, pointsmen, menname, mennationality);
                         list.add(rankingmen);
-                        Log.i("player men ",menname);
-                        Log.i("ranking men ",String.valueOf(rankingmen));
-
-
-
+                        Log.i("player men ", menname);
+                        Log.i("ranking men ", String.valueOf(rankingmen));
 
 
                     }
 
 
-
-
                 }
 
-               // RankingMen overallRanking = new RankingMen(rankingWomenArrayList,rankingMenArrayList);
+                // RankingMen overallRanking = new RankingMen(rankingWomenArrayList,rankingMenArrayList);
                 //list.add(overallRanking);
 
             }
-
-
-
-
-
-
-
-
-
-
 
 
         } catch (JSONException e) {
@@ -209,9 +194,6 @@ public final class QueryUtlisRankingmen {
 
 
     }
-
-
-
 
 
 }

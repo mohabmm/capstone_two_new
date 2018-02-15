@@ -20,13 +20,12 @@ import java.util.ArrayList;
 
 public final class QueryUtlisRankingWomen {
 
-    String weburl;
-
-
     static final String LOG_TAG = QueryUtlisSchedule.class.getSimpleName();
+    String weburl;
 
     private QueryUtlisRankingWomen() {
     }
+
     public static ArrayList<RankingWomen> featchrecipedata(String requestUrl) throws JSONException {
 
 
@@ -53,6 +52,7 @@ public final class QueryUtlisRankingWomen {
         }
         return url;
     }
+
     private static String makeHttpRequest(URL url) throws IOException {
         String jsonResponse = "";
 
@@ -114,7 +114,7 @@ public final class QueryUtlisRankingWomen {
         if (TextUtils.isEmpty(tennisjson)) {
             return null;
         }
-       // ArrayList<RankingWomen> rankingWomenArrayList = new ArrayList<>();
+        // ArrayList<RankingWomen> rankingWomenArrayList = new ArrayList<>();
         ArrayList<RankingWomen> list = new ArrayList<>();
         //ArrayList<RankingMen> rankingMenArrayList = new ArrayList<>();
 
@@ -123,29 +123,26 @@ public final class QueryUtlisRankingWomen {
             JSONObject rootjsonobject = new JSONObject(tennisjson);
             JSONArray rankings = rootjsonobject.getJSONArray("rankings");
 
-            for (int i = 0; i<rankings.length(); i++){
+            for (int i = 0; i < rankings.length(); i++) {
 
 
-                    if(i==0){
+                if (i == 0) {
 
-                //here is women ranking
+                    //here is women ranking
 
-                JSONObject currentrankingwomen = rankings.getJSONObject(0);
-                   JSONArray player_rankingswomen = currentrankingwomen.getJSONArray("player_rankings");
-                    for(int j=0;j<player_rankingswomen.length();j++){
+                    JSONObject currentrankingwomen = rankings.getJSONObject(0);
+                    JSONArray player_rankingswomen = currentrankingwomen.getJSONArray("player_rankings");
+                    for (int j = 0; j < player_rankingswomen.length(); j++) {
 
                         JSONObject currentplayer_rankingswomen = player_rankingswomen.getJSONObject(j);
                         int rankwomen = currentplayer_rankingswomen.getInt("rank");
                         int pointswomen = currentplayer_rankingswomen.getInt("points");
                         JSONObject playerwomen = currentplayer_rankingswomen.getJSONObject("player");
-                        String womenname =  playerwomen.getString("name");
+                        String womenname = playerwomen.getString("name");
                         String womennationality = playerwomen.getString("nationality");
-                        RankingWomen rankingWomen = new RankingWomen(rankwomen,pointswomen,womenname,womennationality);
-                       // rankingWomenArrayList.add(rankingWomen);
+                        RankingWomen rankingWomen = new RankingWomen(rankwomen, pointswomen, womenname, womennationality);
+                        // rankingWomenArrayList.add(rankingWomen);
                         list.add(rankingWomen);
-
-
-
 
 
                     }
@@ -192,14 +189,6 @@ public final class QueryUtlisRankingWomen {
             }
 
 
-
-
-
-
-
-
-
-
         } catch (JSONException e) {
             // If an error is thrown when executing any of the above statements in the "try" block,
             // catch the exception here, so the app doesn't crash. Print a log message
@@ -210,9 +199,6 @@ public final class QueryUtlisRankingWomen {
 
 
     }
-
-
-
 
 
 }

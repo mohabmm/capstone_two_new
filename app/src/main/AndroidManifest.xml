@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nocom.capstone_stage2">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".splash"
+            android:name=".Splash"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,9 +22,8 @@
         </activity>
 
 
-
-
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:label="MainActivity"
             android:parentActivityName=".MainActivity">
             <meta-data
@@ -32,32 +33,31 @@
         </activity>
 
 
-
-        <receiver android:name=".CollectionWidget"
+        <receiver
+            android:name=".CollectionWidget"
             android:enabled="true">
 
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
 
-            <meta-data android:name="android.appwidget.provider"
-                android:resource="@xml/ingrdient_widget_info" />
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/ingridient_widget_info" />
 
         </receiver>
         <!-- 2. The service that will send our collection data to our widget. It needs the
                 permission android.permission.BIND_REMOTEVIEWS -->
 
-        <service android:name=".WidgetService"
+        <service
+            android:name=".WidgetService"
             android:exported="false"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <provider
             android:name="database.TennisProvider"
             android:authorities="database"
-            android:exported="false">
-        </provider>
-
-
+            android:exported="false"></provider>
 
 
         <!--Include the AdActivity configChanges and theme. -->
@@ -67,10 +67,11 @@
             android:theme="@android:style/Theme.Translucent" />
 
 
-
-        <activity android:name=".Favorites"
+        <activity
+            android:name=".Favorites"
             android:label="Favorite"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
+
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".MainActivity" />
@@ -82,19 +83,13 @@
             <intent-filter>
 
 
-                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
 
             </intent-filter>
         </service>
 
 
-
-
     </application>
 
 
-
-
-
-
-    </manifest>
+</manifest>

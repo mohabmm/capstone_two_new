@@ -2,10 +2,6 @@ package com.nocom.capstone_stage2;
 
 import java.util.ArrayList;
 
-/**
- * Created by Moha on 1/29/2018.
- */
-
 public class CollectionSchedule {
     ArrayList name;
     String mnamehome;

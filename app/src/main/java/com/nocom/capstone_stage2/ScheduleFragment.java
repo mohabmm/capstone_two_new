@@ -17,14 +17,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Moha on 1/25/2018.
@@ -38,27 +36,19 @@ public class ScheduleFragment extends Fragment {
     private static final int MOVIE_LOADER_ID = 2;
 
 
-    // private ArrayList<Object> objects = new ArrayList<>();
-    // update the website
-    // String DailyScheduleWebsite = "http://api.sportradar.us/tennis-t2/en/schedules/2018-02-11/schedule.json?api_key=qcxx9ms27b2mnjvmj5db737u";
-    // String DailyScheduleWebsite2 = "http://api.sportradar.us/tennis-t2/en/schedules/2018-02-10/schedule.json?api_key=qcxx9ms27b2mnjvmj5db737u";
     private static final String BUNDLE_RECYCLER_LAYOUT = "classname.recycler.layout";
-
-    //String DailyResult = "http://api.sportradar.us/tennis-t2/en/schedules/2018-01-28/results.json?api_key=qcxx9ms27b2mnjvmj5db737u";
     private final String LOG_TAG = HomeLoader.class.getName();
-    //  ArrayList<Recipe> mNewsData;
     public RecyclerView ScheduleRecycleView;
-    List<Schedule> listItems = new ArrayList<>();
     long savedMillis;
     Parcelable savedRecyclerLayoutState;
     TextView emptytextview;
     Bundle bundle;
     ScheduleMainAdapter ScheduleAdapter;
-
     ArrayList<CollectionSchedule> recepieList;
     String savedTime;
 
     String DailyResult = "http://api.sportradar.us/tennis-t2/en/schedules/" + savedTime + "/results.json?api_key=regz4ypwqjdq2h43d6d66kkh";
+    ProgressBar progressBar;
     public LoaderManager.LoaderCallbacks<ArrayList<CollectionSchedule>> loaderone = new LoaderManager.LoaderCallbacks<ArrayList<CollectionSchedule>>() {
         @Override
         public android.support.v4.content.Loader<ArrayList<CollectionSchedule>> onCreateLoader(int id, Bundle args) {
@@ -71,7 +61,7 @@ public class ScheduleFragment extends Fragment {
         public void onLoadFinished(android.support.v4.content.Loader<ArrayList<CollectionSchedule>> loader, ArrayList<CollectionSchedule> data) {
 
 
-//            progressBar.setVisibility(View.INVISIBLE);
+            progressBar.setVisibility(View.INVISIBLE);
 
             if (savedRecyclerLayoutState != null) {
 
@@ -80,18 +70,14 @@ public class ScheduleFragment extends Fragment {
 
             if (data != null) {
 
-                Toast.makeText(getContext(), "datanotnull", Toast.LENGTH_SHORT).show();
 
 ///////////////// update the adapter after wayching the tutorial /////////////
                 ScheduleAdapter.setWeatherData(data);
 
 
-
-
             } else {
                 recepieList = data;
 
-                Log.i("moha", "e7na gwa al else ");
 
             }
 
@@ -105,20 +91,16 @@ public class ScheduleFragment extends Fragment {
 
     };
 
-    TextView emptytext;
-    ProgressBar progressBar;
-    private Toast mToast;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.schedulefragment, container, false);
         final Intent intentThatStartedThisActivity = getActivity().getIntent();
         savedMillis = System.currentTimeMillis();
 
-
+        progressBar = view.findViewById(R.id.loading_spinner);
+        emptytextview = view.findViewById(R.id.empty_view);
         if (savedInstanceState != null) {
 
-            Toast.makeText(getContext(), "on activity created is used ", Toast.LENGTH_SHORT).show();
 
 
             savedRecyclerLayoutState = savedInstanceState.getParcelable(BUNDLE_RECYCLER_LAYOUT);
@@ -157,8 +139,6 @@ public class ScheduleFragment extends Fragment {
         } else {
 
 
-            Toast.makeText(getContext(), "time dont pass", Toast.LENGTH_SHORT).show();
-            // the date havenot changed query for current date
 
             DailyResult = "http://api.sportradar.us/tennis-t2/en/schedules/" + savedTime + "/results.json?api_key=regz4ypwqjdq2h43d6d66kkh";
         }
@@ -201,8 +181,7 @@ public class ScheduleFragment extends Fragment {
         } else {
             // Otherwise, display error
             // First, hide loading indicator so error message will be visible
-            //   emptytext.setText("No Internet Connection ");
-            emptytextview.setText("no onternet conection ");
+            emptytextview.setText(getString(R.string.internetconnctionmessage));
             progressBar.setVisibility(View.INVISIBLE);
 
             // Update empty state with no connection error message

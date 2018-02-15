@@ -20,7 +20,7 @@ public class TennisDBHelper extends SQLiteOpenHelper {
     // Create the database
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String SQL_CREATE_PETS_TABLE =  "CREATE TABLE " + TennisContract.TennisEntry.TABLE_TENNIS + " ("
+        String SQL_CREATE_PETS_TABLE = "CREATE TABLE " + TennisContract.TennisEntry.TABLE_TENNIS + " ("
                 + TennisContract.TennisEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + TennisContract.TennisEntry.COLUMN_DESCRIBTION + " TEXT NOT NULL , "
                 + TennisContract.TennisEntry.COLUMN_SHORTDESCRIBTION + " TEXT NOT NULL, "
@@ -38,7 +38,6 @@ public class TennisDBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TennisContract.TennisEntry.TABLE_TENNIS);
         onCreate(sqLiteDatabase);
     }
-
 
 
 }
